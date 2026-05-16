@@ -1,0 +1,146 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "No-as-a-Service API",
+    "description": "No-as-a-Service (NaaS) is a simple API that returns a random rejection reason. Use it when you need a realistic excuse, a fun \"no,\" or want to simulate being turned down in style. Built for humans, excuses, and humor.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "hotheadhacker",
+      "url": "https://github.com/hotheadhacker/no-as-a-service"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/hotheadhacker/no-as-a-service/blob/main/LICENSE"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://naas.isalman.dev",
+      "description": "Production server"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "Local development server"
+    }
+  ],
+  "paths": {
+    "/no": {
+      "get": {
+        "summary": "Get a random rejection reason",
+        "description": "Returns a random, creative, and sometimes hilarious rejection reason. Perfectly suited for any scenario: personal, professional, student life, dev life, or just because.",
+        "operationId": "getRandomNo",
+        "responses": {
+          "200": {
+            "description": "A successful response containing a random rejection reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "reason": {
+                      "type": "string",
+                      "description": "A random rejection or \"no\" reason",
+                      "example": "This feels like something Future Me would yell at Present Me for agreeing to."
+                    }
+                  },
+                  "required": [
+                    "reason"
+                  ]
+                },
+                "examples": {
+                  "example1": {
+                    "summary": "Example rejection reason",
+                    "value": {
+                      "reason": "This feels like something Future Me would yell at Present Me for agreeing to."
+                    }
+                  },
+                  "example2": {
+                    "summary": "Another example",
+                    "value": {
+                      "reason": "I'd rather watch paint dry while explaining the plot of Inception to my houseplant."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded. Maximum 120 requests per minute per IP",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Too many requests, please try again later"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "An error occurred while processing your request"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Rejection Reasons"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "NoResponse": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "description": "A random rejection or \"no\" reason"
+          }
+        },
+        "required": [
+          "reason"
+        ]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Rejection Reasons",
+      "description": "Operations for retrieving random rejection reasons"
+    }
+  ],
+  "externalDocs": {
+    "description": "GitHub Repository and Documentation",
+    "url": "https://github.com/hotheadhacker/no-as-a-service"
+  },
+  "x-rate-limit": {
+    "limit": 120,
+    "window": "1 minute",
+    "per": "IP address"
+  }
+}

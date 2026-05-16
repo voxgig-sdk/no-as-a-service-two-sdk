@@ -1,0 +1,32 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "hotheadhacker"
+        url: "https://github.com/hotheadhacker/no-as-a-service"
+      }
+      description: "No-as-a-Service (NaaS) is a simple API that returns a random rejection reason. Use it when you need a realistic excuse, a fun \"no,\" or want to simulate being turned down in style. Built for humans, excuses, and humor."
+      license: {
+        name: "MIT"
+        url: "https://github.com/hotheadhacker/no-as-a-service/blob/main/LICENSE"
+      }
+      servers: [
+        {
+          description: "Production server"
+          url: "https://naas.isalman.dev"
+        }
+        {
+          description: "Local development server"
+          url: "http://localhost:3000"
+        }
+      ]
+      title: "No-as-a-Service API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

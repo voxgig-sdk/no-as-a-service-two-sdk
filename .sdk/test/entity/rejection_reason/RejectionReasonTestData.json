@@ -1,0 +1,25 @@
+{
+  "existing": {
+    "rejection_reason": {
+      "REJECTION_REASON00": {
+        "reason": "sa",
+        "id": "REJECTION_REASON00"
+      },
+      "REJECTION_REASON01": {
+        "reason": "s14",
+        "id": "REJECTION_REASON01"
+      },
+      "REJECTION_REASON02": {
+        "reason": "s1e",
+        "id": "REJECTION_REASON02"
+      }
+    }
+  },
+  "new": {
+    "rejection_reason": {
+      "rejection_reason_ref01": {
+        "reason": "s28"
+      }
+    }
+  }
+}

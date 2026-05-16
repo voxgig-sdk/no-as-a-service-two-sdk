@@ -1,0 +1,37 @@
+# Entity: rejection_reason
+
+main: kit: entity: rejection_reason: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "reason"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "rejection_reason"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/no"
+          parts: [
+            "no"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

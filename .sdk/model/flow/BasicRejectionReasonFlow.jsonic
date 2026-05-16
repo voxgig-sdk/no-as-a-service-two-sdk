@@ -1,0 +1,28 @@
+# BasicRejectionReasonFlow
+
+main: kit: flow: BasicRejectionReasonFlow:
+{
+  entity: "rejection_reason",
+  kind: "basic",
+  name: "BasicRejectionReasonFlow",
+  step: [
+    {
+      input: {
+        ref: "rejection_reason_ref01",
+        srcdatavar: "rejection_reason_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-rejection_reason_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRejectionReasonFlow"
+}
