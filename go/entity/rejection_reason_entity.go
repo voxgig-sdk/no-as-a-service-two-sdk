@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/no-as-a-service-two-sdk/core"
+	"github.com/voxgig-sdk/no-as-a-service-two-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/no-as-a-service-two-sdk/go/utility/struct"
 )
 
 type RejectionReasonEntity struct {

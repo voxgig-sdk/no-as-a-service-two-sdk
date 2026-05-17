@@ -1,10 +1,10 @@
 package voxgignoasaservicetwosdk
 
 import (
-	"github.com/voxgig-sdk/no-as-a-service-two-sdk/core"
-	"github.com/voxgig-sdk/no-as-a-service-two-sdk/entity"
-	"github.com/voxgig-sdk/no-as-a-service-two-sdk/feature"
-	_ "github.com/voxgig-sdk/no-as-a-service-two-sdk/utility"
+	"github.com/voxgig-sdk/no-as-a-service-two-sdk/go/core"
+	"github.com/voxgig-sdk/no-as-a-service-two-sdk/go/entity"
+	"github.com/voxgig-sdk/no-as-a-service-two-sdk/go/feature"
+	_ "github.com/voxgig-sdk/no-as-a-service-two-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

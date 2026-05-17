@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/no-as-a-service-two-sdk"
-	"github.com/voxgig-sdk/no-as-a-service-two-sdk/core"
+	sdk "github.com/voxgig-sdk/no-as-a-service-two-sdk/go"
+	"github.com/voxgig-sdk/no-as-a-service-two-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/no-as-a-service-two-sdk/go/utility/struct"
 )
 
 func TestRejectionReasonEntity(t *testing.T) {

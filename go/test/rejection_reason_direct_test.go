@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/no-as-a-service-two-sdk"
-	"github.com/voxgig-sdk/no-as-a-service-two-sdk/core"
+	sdk "github.com/voxgig-sdk/no-as-a-service-two-sdk/go"
+	"github.com/voxgig-sdk/no-as-a-service-two-sdk/go/core"
 )
 
 func TestRejectionReasonDirect(t *testing.T) {
