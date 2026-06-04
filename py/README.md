@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from noasaservicetwo_sdk import NoAsAServiceTwoSDK
 
-client = NoAsAServiceTwoSDK({
-    "apikey": os.environ.get("NO-AS-A-SERVICE-TWO_APIKEY"),
-})
+client = NoAsAServiceTwoSDK({})
 ```
 
 ### 3. Load a rejectionreason
@@ -117,7 +114,6 @@ Create a `.env.local` file at the project root:
 
 ```
 NO-AS-A-SERVICE-TWO_TEST_LIVE=TRUE
-NO-AS-A-SERVICE-TWO_APIKEY=<your-key>
 ```
 
 Then run:
@@ -141,7 +137,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

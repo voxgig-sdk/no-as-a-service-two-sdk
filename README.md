@@ -1,9 +1,96 @@
 # NoAsAServiceTwo SDK
 
+Get a random, creatively-worded rejection reason on demand
 
+> TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-Available for [Golang](go/) and [Go CLI](go-cli/) and [Go MCP server](go-mcp/) and [Lua](lua/) and [PHP](php/) and [Python](py/) and [Ruby](rb/) and [TypeScript](ts/).
+## About No-as-a-Service API
 
+No-as-a-Service is a small, free API that returns a random, often humorous rejection reason. It is maintained by [hotheadhacker](https://github.com/hotheadhacker) and hosted at `naas.isalman.dev`, with the source code available on GitHub under an MIT licence.
+
+What you get from the API:
+
+- A single `GET /no` endpoint
+- A JSON response with a `reason` field containing a randomly-selected excuse drawn from a pool of 1000+ rejection lines
+- Useful for demos, placeholder content, chat bots, screensavers, or anywhere you need a creative way to say no
+
+The service has CORS enabled, requires no authentication, and applies a rate limit of 120 requests per minute per IP. The project is also packaged for self-hosting via Node.js, Docker, and devcontainers, so you can run your own instance if you prefer.
+
+## Try it
+
+**TypeScript**
+```bash
+npm install no-as-a-service-two
+```
+
+**Python**
+```bash
+pip install no-as-a-service-two-sdk
+```
+
+**PHP**
+```bash
+composer require voxgig/no-as-a-service-two-sdk
+```
+
+**Golang**
+```bash
+go get github.com/voxgig-sdk/no-as-a-service-two-sdk/go
+```
+
+**Ruby**
+```bash
+gem install no-as-a-service-two-sdk
+```
+
+**Lua**
+```bash
+luarocks install no-as-a-service-two-sdk
+```
+
+## 30-second quickstart
+
+### TypeScript
+
+```ts
+import { NoAsAServiceTwoSDK } from 'no-as-a-service-two'
+
+const client = new NoAsAServiceTwoSDK({})
+
+```
+
+See the [TypeScript README](ts/README.md) for the
+full guide, or scroll down for the same example in other languages.
+
+## What's in the box
+
+| Surface | Use it for | Path |
+| --- | --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
+| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+
+## Use it from an AI agent (MCP)
+
+The generated MCP server exposes every operation in this SDK as an
+[MCP](https://modelcontextprotocol.io) tool that Claude, Cursor or Cline
+can call directly. Build and register it:
+
+```bash
+cd go-mcp && go build -o no-as-a-service-two-mcp .
+```
+
+Then add it to your agent's MCP config (Claude Desktop, Cursor, etc.):
+
+```json
+{
+  "mcpServers": {
+    "no-as-a-service-two": {
+      "command": "/abs/path/to/no-as-a-service-two-mcp"
+    }
+  }
+}
+```
 
 ## Entities
 
@@ -11,75 +98,24 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **RejectionReason** |  | `/no` |
+| **RejectionReason** | A randomly-selected rejection excuse returned as a JSON `{ "reason": "..." }` payload from `GET /no`. | `/no` |
 
-Each entity supports the following operations where available: **load**, **list**, **create**,
-**update**, and **remove**.
+Each entity supports the following operations where available: **load**,
+**list**, **create**, **update**, and **remove**.
 
+## Quickstart in other languages
 
-## Architecture
+### Python
 
-### Entity-operation model
+```python
+from noasaservicetwo_sdk import NoAsAServiceTwoSDK
 
-Every SDK call follows the same pipeline:
-
-1. **Point** — resolve the API endpoint from the operation definition.
-2. **Spec** — build the HTTP specification (URL, method, headers, body).
-3. **Request** — send the HTTP request.
-4. **Response** — receive and parse the response.
-5. **Result** — extract the result data for the caller.
-
-At each stage a feature hook fires (e.g. `PrePoint`, `PreSpec`,
-`PreRequest`), allowing features to inspect or modify the pipeline.
-
-### Features
-
-Features are hook-based middleware that extend SDK behaviour.
-
-| Feature | Purpose |
-| --- | --- |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-
-You can add custom features by passing them in the `extend` option at
-construction time.
-
-### Direct and Prepare
-
-For endpoints not covered by the entity model, use the low-level methods:
-
-- **`direct(fetchargs)`** — build and send an HTTP request in one step.
-- **`prepare(fetchargs)`** — build the request without sending it.
-
-Both accept a map with `path`, `method`, `params`, `query`, `headers`,
-and `body`.
+client = NoAsAServiceTwoSDK({})
 
 
-## Quick start
-
-### Golang
-
-```go
-import sdk "github.com/voxgig-sdk/no-as-a-service-two-sdk/go"
-
-client := sdk.NewNoAsAServiceTwoSDK(map[string]any{
-    "apikey": os.Getenv("NO-AS-A-SERVICE-TWO_APIKEY"),
-})
-
-```
-
-### Lua
-
-```lua
-local sdk = require("no-as-a-service-two_sdk")
-
-local client = sdk.new({
-  apikey = os.getenv("NO-AS-A-SERVICE-TWO_APIKEY"),
-})
-
-
--- Load a specific rejectionreason
-local rejectionreason, err = client:RejectionReason(nil):load(
-  { id = "example_id" }, nil
+# Load a specific rejectionreason
+rejectionreason, err = client.RejectionReason(None).load(
+    {"id": "example_id"}, None
 )
 ```
 
@@ -89,9 +125,7 @@ local rejectionreason, err = client:RejectionReason(nil):load(
 <?php
 require_once 'noasaservicetwo_sdk.php';
 
-$client = new NoAsAServiceTwoSDK([
-    "apikey" => getenv("NO-AS-A-SERVICE-TWO_APIKEY"),
-]);
+$client = new NoAsAServiceTwoSDK([]);
 
 
 // Load a specific rejectionreason
@@ -100,21 +134,13 @@ $client = new NoAsAServiceTwoSDK([
 );
 ```
 
-### Python
+### Golang
 
-```python
-import os
-from noasaservicetwo_sdk import NoAsAServiceTwoSDK
+```go
+import sdk "github.com/voxgig-sdk/no-as-a-service-two-sdk/go"
 
-client = NoAsAServiceTwoSDK({
-    "apikey": os.environ.get("NO-AS-A-SERVICE-TWO_APIKEY"),
-})
+client := sdk.NewNoAsAServiceTwoSDK(map[string]any{})
 
-
-# Load a specific rejectionreason
-rejectionreason, err = client.RejectionReason(None).load(
-    {"id": "example_id"}, None
-)
 ```
 
 ### Ruby
@@ -122,9 +148,7 @@ rejectionreason, err = client.RejectionReason(None).load(
 ```ruby
 require_relative "NoAsAServiceTwo_sdk"
 
-client = NoAsAServiceTwoSDK.new({
-  "apikey" => ENV["NO-AS-A-SERVICE-TWO_APIKEY"],
-})
+client = NoAsAServiceTwoSDK.new({})
 
 
 # Load a specific rejectionreason
@@ -133,38 +157,39 @@ rejectionreason, err = client.RejectionReason(nil).load(
 )
 ```
 
-### TypeScript
-
-```ts
-import { NoAsAServiceTwoSDK } from 'no-as-a-service-two'
-
-const client = new NoAsAServiceTwoSDK({
-  apikey: process.env.NO-AS-A-SERVICE-TWO_APIKEY,
-})
-
-```
-
-
-## Testing
-
-Both SDKs provide a test mode that replaces the HTTP transport with an
-in-memory mock, so tests run without a network connection.
-
-### Golang
-
-```go
-client := sdk.TestSDK(nil, nil)
-result, err := client.RejectionReason(nil).Load(
-    map[string]any{"id": "test01"}, nil,
-)
-```
-
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:RejectionReason(nil):load(
-  { id = "test01" }, nil
+local sdk = require("no-as-a-service-two_sdk")
+
+local client = sdk.new({})
+
+
+-- Load a specific rejectionreason
+local rejectionreason, err = client:RejectionReason(nil):load(
+  { id = "example_id" }, nil
+)
+```
+
+## Unit testing in offline mode
+
+Every SDK ships a test mode that swaps the HTTP transport for an
+in-memory mock, so unit tests run offline.
+
+### TypeScript
+
+```ts
+const client = NoAsAServiceTwoSDK.test()
+const result = await client.RejectionReason().load({ id: 'test01' })
+// result.ok === true, result.data contains mock data
+```
+
+### Python
+
+```python
+client = NoAsAServiceTwoSDK.test(None, None)
+result, err = client.RejectionReason(None).load(
+    {"id": "test01"}, None
 )
 ```
 
@@ -177,12 +202,12 @@ $client = NoAsAServiceTwoSDK::test(null, null);
 );
 ```
 
-### Python
+### Golang
 
-```python
-client = NoAsAServiceTwoSDK.test(None, None)
-result, err = client.RejectionReason(None).load(
-    {"id": "test01"}, None
+```go
+client := sdk.TestSDK(nil, nil)
+result, err := client.RejectionReason(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 ```
 
@@ -195,14 +220,46 @@ result, err = client.RejectionReason(nil).load(
 )
 ```
 
-### TypeScript
+### Lua
 
-```ts
-const client = NoAsAServiceTwoSDK.test()
-const result = await client.RejectionReason().load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+```lua
+local client = sdk.test(nil, nil)
+local result, err = client:RejectionReason(nil):load(
+  { id = "test01" }, nil
+)
 ```
 
+## How it works
+
+Every SDK call runs the same five-stage pipeline:
+
+1. **Point** — resolve the API endpoint from the operation definition.
+2. **Spec** — build the HTTP specification (URL, method, headers, body).
+3. **Request** — send the HTTP request.
+4. **Response** — receive and parse the response.
+5. **Result** — extract the result data for the caller.
+
+A feature hook fires at each stage (e.g. `PrePoint`, `PreSpec`,
+`PreRequest`), so features can inspect or modify the pipeline without
+forking the SDK.
+
+### Features
+
+| Feature | Purpose |
+| --- | --- |
+| **TestFeature** | In-memory mock transport for testing without a live server |
+
+Pass custom features via the `extend` option at construction time.
+
+### Direct and Prepare
+
+For endpoints the entity model doesn't cover, use the low-level methods:
+
+- **`direct(fetchargs)`** — build and send an HTTP request in one step.
+- **`prepare(fetchargs)`** — build the request without sending it.
+
+Both accept a map with `path`, `method`, `params`, `query`,
+`headers`, and `body`. See the [How-to guides](#how-to-guides) below.
 
 ## How-to guides
 
@@ -210,21 +267,22 @@ const result = await client.RejectionReason().load({ id: 'test01' })
 
 When the entity interface does not cover an endpoint, use `direct`:
 
-**Go:**
-```go
-result, err := client.Direct(map[string]any{
-    "path":   "/api/resource/{id}",
-    "method": "GET",
-    "params": map[string]any{"id": "example"},
+**TypeScript:**
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example' },
 })
+console.log(result.data)
 ```
 
-**Lua:**
-```lua
-local result, err = client:direct({
-  path = "/api/resource/{id}",
-  method = "GET",
-  params = { id = "example" },
+**Python:**
+```python
+result, err = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example"},
 })
 ```
 
@@ -237,12 +295,12 @@ local result, err = client:direct({
 ]);
 ```
 
-**Python:**
-```python
-result, err = client.direct({
-    "path": "/api/resource/{id}",
+**Go:**
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
     "method": "GET",
-    "params": {"id": "example"},
+    "params": map[string]any{"id": "example"},
 })
 ```
 
@@ -255,25 +313,33 @@ result, err = client.direct({
 })
 ```
 
-**TypeScript:**
-```ts
-const result = await client.direct({
-  path: '/api/resource/{id}',
-  method: 'GET',
-  params: { id: 'example' },
+**Lua:**
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example" },
 })
-console.log(result.data)
 ```
 
+## Per-language documentation
 
-## Language-specific documentation
+- [TypeScript](ts/README.md)
+- [Python](py/README.md)
+- [PHP](php/README.md)
+- [Golang](go/README.md)
+- [Ruby](rb/README.md)
+- [Lua](lua/README.md)
 
-- [Golang SDK](go/README.md)
-- [Go CLI SDK](go-cli/README.md)
-- [Go MCP server SDK](go-mcp/README.md)
-- [Lua SDK](lua/README.md)
-- [PHP SDK](php/README.md)
-- [Python SDK](py/README.md)
-- [Ruby SDK](rb/README.md)
-- [TypeScript SDK](ts/README.md)
+## Using the No-as-a-Service API
 
+- Upstream: [https://naas.isalman.dev](https://naas.isalman.dev)
+- API docs: [https://github.com/hotheadhacker/no-as-a-service](https://github.com/hotheadhacker/no-as-a-service)
+
+- Licensed under the MIT License
+- Permits broad reuse, modification, and redistribution with minimal restrictions
+- Source available at [hotheadhacker/no-as-a-service](https://github.com/hotheadhacker/no-as-a-service)
+
+---
+
+Generated from the No-as-a-Service API OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).

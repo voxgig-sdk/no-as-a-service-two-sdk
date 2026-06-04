@@ -91,7 +91,6 @@ def _rejection_reason_basic_setup(extra):
         "NOASASERVICETWO_TEST_REJECTION_REASON_ENTID": idmap,
         "NOASASERVICETWO_TEST_LIVE": "FALSE",
         "NOASASERVICETWO_TEST_EXPLAIN": "FALSE",
-        "NOASASERVICETWO_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +101,6 @@ def _rejection_reason_basic_setup(extra):
     if env.get("NOASASERVICETWO_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("NOASASERVICETWO_APIKEY"),
             },
             extra or {},
         ])

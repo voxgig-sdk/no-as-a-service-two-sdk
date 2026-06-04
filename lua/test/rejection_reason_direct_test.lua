@@ -62,14 +62,12 @@ function rejection_reason_direct_setup(mockres)
   local env = runner.env_override({
     ["NOASASERVICETWO_TEST_REJECTION_REASON_ENTID"] = {},
     ["NOASASERVICETWO_TEST_LIVE"] = "FALSE",
-    ["NOASASERVICETWO_APIKEY"] = "NONE",
   })
 
   local live = env["NOASASERVICETWO_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["NOASASERVICETWO_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

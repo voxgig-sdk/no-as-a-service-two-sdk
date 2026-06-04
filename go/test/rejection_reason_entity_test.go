@@ -117,7 +117,6 @@ func rejection_reasonBasicSetup(extra map[string]any) *entityTestSetup {
 		"NOASASERVICETWO_TEST_REJECTION_REASON_ENTID": idmap,
 		"NOASASERVICETWO_TEST_LIVE":      "FALSE",
 		"NOASASERVICETWO_TEST_EXPLAIN":   "FALSE",
-		"NOASASERVICETWO_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["NOASASERVICETWO_TEST_REJECTION_REASON_ENTID"])
@@ -128,7 +127,6 @@ func rejection_reasonBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["NOASASERVICETWO_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["NOASASERVICETWO_APIKEY"],
 			},
 			extra,
 		})

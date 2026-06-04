@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://naas.isalman.dev",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },

@@ -99,14 +99,12 @@ func rejection_reasonDirectSetup(mockres any) *rejection_reasonDirectSetupResult
 	env := envOverride(map[string]any{
 		"NOASASERVICETWO_TEST_REJECTION_REASON_ENTID": map[string]any{},
 		"NOASASERVICETWO_TEST_LIVE":    "FALSE",
-		"NOASASERVICETWO_APIKEY":       "NONE",
 	})
 
 	live := env["NOASASERVICETWO_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["NOASASERVICETWO_APIKEY"],
 		}
 		client := sdk.NewNoAsAServiceTwoSDK(mergedOpts)
 

@@ -25,7 +25,17 @@
           }
         ],
         "title": "No-as-a-Service API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Get a random, creatively-worded rejection reason on demand",
+        "homepage": "https://naas.isalman.dev",
+        "docs_url": "https://github.com/hotheadhacker/no-as-a-service",
+        "license_short": "MIT License",
+        "license_md": "- Licensed under the MIT License\n- Permits broad reuse, modification, and redistribution with minimal restrictions\n- Source available at [hotheadhacker/no-as-a-service](https://github.com/hotheadhacker/no-as-a-service)",
+        "about_md": "No-as-a-Service is a small, free API that returns a random, often humorous rejection reason. It is maintained by [hotheadhacker](https://github.com/hotheadhacker) and hosted at `naas.isalman.dev`, with the source code available on GitHub under an MIT licence.\n\nWhat you get from the API:\n\n- A single `GET /no` endpoint\n- A JSON response with a `reason` field containing a randomly-selected excuse drawn from a pool of 1000+ rejection lines\n- Useful for demos, placeholder content, chat bots, screensavers, or anywhere you need a creative way to say no\n\nThe service has CORS enabled, requires no authentication, and applies a rate limit of 120 requests per minute per IP. The project is also packaged for self-hosting via Node.js, Docker, and devcontainers, so you can run your own instance if you prefer.",
+        "entity_desc": {
+          "rejection_reason": "A randomly-selected rejection excuse returned as a JSON `{ \"reason\": \"...\" }` payload from `GET /no`."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -33,7 +43,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "rejection_reason": {
