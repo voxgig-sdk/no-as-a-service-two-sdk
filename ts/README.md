@@ -10,7 +10,7 @@ The TypeScript SDK for the NoAsAServiceTwo API — a type-safe, entity-oriented 
 
 ## Install
 ```bash
-npm install no-as-a-service-two
+npm install @voxgig-sdk/no-as-a-service-two
 ```
 ## Tutorial: your first API call
 

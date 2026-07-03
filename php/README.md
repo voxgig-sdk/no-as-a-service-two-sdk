@@ -10,7 +10,7 @@ The PHP SDK for the NoAsAServiceTwo API — an entity-oriented client using PHP 
 
 ## Install
 ```bash
-composer require voxgig/no-as-a-service-two-sdk
+composer require voxgig-sdk/no-as-a-service-two
 ```
 
 

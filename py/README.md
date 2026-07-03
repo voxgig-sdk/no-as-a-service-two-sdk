@@ -10,7 +10,7 @@ The Python SDK for the NoAsAServiceTwo API — an entity-oriented client followi
 
 ## Install
 ```bash
-pip install no-as-a-service-two-sdk
+pip install voxgig-sdk-no-as-a-service-two
 ```
 
 Or install from source:

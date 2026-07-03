@@ -10,13 +10,13 @@ The Ruby SDK for the NoAsAServiceTwo API — an entity-oriented client using idi
 
 ## Install
 ```bash
-gem install no-as-a-service-two-sdk
+gem install voxgig-sdk-no-as-a-service-two
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "no-as-a-service-two-sdk"
+gem "voxgig-sdk-no-as-a-service-two"
 ```
 
 Then run:
