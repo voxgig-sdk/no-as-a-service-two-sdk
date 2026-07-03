@@ -74,12 +74,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'NOASASERVICETWO_TEST_REJECTION_REASON_ENTID': {},
     'NOASASERVICETWO_TEST_LIVE': 'FALSE',
+    'NOASASERVICETWO_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.NOASASERVICETWO_TEST_LIVE
 
   if (live) {
     const client = new NoAsAServiceTwoSDK({
+      apikey: env.NOASASERVICETWO_APIKEY,
     })
 
     let idmap: any = env['NOASASERVICETWO_TEST_REJECTION_REASON_ENTID']

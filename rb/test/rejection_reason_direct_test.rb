@@ -61,12 +61,14 @@ def rejection_reason_direct_setup(mockres)
   env = Runner.env_override({
     "NOASASERVICETWO_TEST_REJECTION_REASON_ENTID" => {},
     "NOASASERVICETWO_TEST_LIVE" => "FALSE",
+    "NOASASERVICETWO_APIKEY" => "NONE",
   })
 
   live = env["NOASASERVICETWO_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["NOASASERVICETWO_APIKEY"],
     }
     client = NoAsAServiceTwoSDK.new(merged_opts)
     return {

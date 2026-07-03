@@ -38,6 +38,10 @@ class Config {
   options = {
     base: 'https://naas.isalman.dev',
 
+    auth: {
+      prefix: 'Bearer',
+    },
+
     headers: {
       "content-type": "application/json"
     },
@@ -55,35 +59,35 @@ class Config {
     "rejection_reason": {
       "fields": [
         {
+          "active": true,
           "name": "reason",
           "req": true,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         }
       ],
       "name": "rejection_reason",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/no",
               "parts": [
                 "no"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },

@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://naas.isalman.dev",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -26,35 +29,35 @@ def make_config():
       "rejection_reason": {
         "fields": [
           {
+            "active": True,
             "name": "reason",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 0,
           },
         ],
         "name": "rejection_reason",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
+                "args": {},
                 "method": "GET",
                 "orig": "/no",
                 "parts": [
                   "no",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },

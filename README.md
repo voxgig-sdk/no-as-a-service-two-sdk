@@ -1,20 +1,8 @@
 # NoAsAServiceTwo SDK
 
-Get a random, creatively-worded rejection reason on demand
+No-as-a-Service API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About No-as-a-Service API
-
-No-as-a-Service is a small, free API that returns a random, often humorous rejection reason. It is maintained by [hotheadhacker](https://github.com/hotheadhacker) and hosted at `naas.isalman.dev`, with the source code available on GitHub under an MIT licence.
-
-What you get from the API:
-
-- A single `GET /no` endpoint
-- A JSON response with a `reason` field containing a randomly-selected excuse drawn from a pool of 1000+ rejection lines
-- Useful for demos, placeholder content, chat bots, screensavers, or anywhere you need a creative way to say no
-
-The service has CORS enabled, requires no authentication, and applies a rate limit of 120 requests per minute per IP. The project is also packaged for self-hosting via Node.js, Docker, and devcontainers, so you can run your own instance if you prefer.
 
 ## Try it
 
@@ -48,27 +36,31 @@ gem install no-as-a-service-two-sdk
 luarocks install no-as-a-service-two-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { NoAsAServiceTwoSDK } from 'no-as-a-service-two'
 
-const client = new NoAsAServiceTwoSDK({})
+const client = new NoAsAServiceTwoSDK({
+  apikey: process.env.NO-AS-A-SERVICE-TWO_APIKEY,
+})
 
+// Load rejectionreason data
+const rejectionreason = await client.RejectionReason().load({})
+console.log(rejectionreason.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **RejectionReason** | A randomly-selected rejection excuse returned as a JSON `{ "reason": "..." }` payload from `GET /no`. | `/no` |
+| **RejectionReason** |  | `/no` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -108,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from noasaservicetwo_sdk import NoAsAServiceTwoSDK
 
-client = NoAsAServiceTwoSDK({})
+client = NoAsAServiceTwoSDK({
+    "apikey": os.environ.get("NO-AS-A-SERVICE-TWO_APIKEY"),
+})
 
 
 # Load a specific rejectionreason
-rejectionreason, err = client.RejectionReason(None).load(
-    {"id": "example_id"}, None
-)
+rejectionreason, err = client.RejectionReason().load({"id": "example_id"})
+print(rejectionreason)
 ```
 
 ### PHP
@@ -125,13 +119,14 @@ rejectionreason, err = client.RejectionReason(None).load(
 <?php
 require_once 'noasaservicetwo_sdk.php';
 
-$client = new NoAsAServiceTwoSDK([]);
+$client = new NoAsAServiceTwoSDK([
+    "apikey" => getenv("NO-AS-A-SERVICE-TWO_APIKEY"),
+]);
 
 
 // Load a specific rejectionreason
-[$rejectionreason, $err] = $client->RejectionReason(null)->load(
-    ["id" => "example_id"], null
-);
+[$rejectionreason, $err] = $client->RejectionReason()->load(["id" => "example_id"]);
+print_r($rejectionreason);
 ```
 
 ### Golang
@@ -139,8 +134,13 @@ $client = new NoAsAServiceTwoSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/no-as-a-service-two-sdk/go"
 
-client := sdk.NewNoAsAServiceTwoSDK(map[string]any{})
+client := sdk.NewNoAsAServiceTwoSDK(map[string]any{
+    "apikey": os.Getenv("NO-AS-A-SERVICE-TWO_APIKEY"),
+})
 
+// Load rejectionreason data
+rejectionreason, err := client.RejectionReason(nil).Load(map[string]any{}, nil)
+fmt.Println(rejectionreason)
 ```
 
 ### Ruby
@@ -148,13 +148,14 @@ client := sdk.NewNoAsAServiceTwoSDK(map[string]any{})
 ```ruby
 require_relative "NoAsAServiceTwo_sdk"
 
-client = NoAsAServiceTwoSDK.new({})
+client = NoAsAServiceTwoSDK.new({
+  "apikey" => ENV["NO-AS-A-SERVICE-TWO_APIKEY"],
+})
 
 
 # Load a specific rejectionreason
-rejectionreason, err = client.RejectionReason(nil).load(
-  { "id" => "example_id" }, nil
-)
+rejectionreason, err = client.RejectionReason().load({ "id" => "example_id" })
+puts rejectionreason
 ```
 
 ### Lua
@@ -162,13 +163,14 @@ rejectionreason, err = client.RejectionReason(nil).load(
 ```lua
 local sdk = require("no-as-a-service-two_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("NO-AS-A-SERVICE-TWO_APIKEY"),
+})
 
 
 -- Load a specific rejectionreason
-local rejectionreason, err = client:RejectionReason(nil):load(
-  { id = "example_id" }, nil
-)
+local rejectionreason, err = client:RejectionReason():load({ id = "example_id" })
+print(rejectionreason)
 ```
 
 ## Unit testing in offline mode
@@ -187,25 +189,21 @@ const result = await client.RejectionReason().load({ id: 'test01' })
 ### Python
 
 ```python
-client = NoAsAServiceTwoSDK.test(None, None)
-result, err = client.RejectionReason(None).load(
-    {"id": "test01"}, None
-)
+client = NoAsAServiceTwoSDK.test()
+result, err = client.RejectionReason().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = NoAsAServiceTwoSDK::test(null, null);
-[$result, $err] = $client->RejectionReason(null)->load(
-    ["id" => "test01"], null
-);
+$client = NoAsAServiceTwoSDK::test();
+[$result, $err] = $client->RejectionReason()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.RejectionReason(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -214,19 +212,15 @@ result, err := client.RejectionReason(nil).Load(
 ### Ruby
 
 ```ruby
-client = NoAsAServiceTwoSDK.test(nil, nil)
-result, err = client.RejectionReason(nil).load(
-  { "id" => "test01" }, nil
-)
+client = NoAsAServiceTwoSDK.test
+result, err = client.RejectionReason().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:RejectionReason(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:RejectionReason():load({ id = "test01" })
 ```
 
 ## How it works
@@ -330,15 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the No-as-a-Service API
-
-- Upstream: [https://naas.isalman.dev](https://naas.isalman.dev)
-- API docs: [https://github.com/hotheadhacker/no-as-a-service](https://github.com/hotheadhacker/no-as-a-service)
-
-- Licensed under the MIT License
-- Permits broad reuse, modification, and redistribution with minimal restrictions
-- Source available at [hotheadhacker/no-as-a-service](https://github.com/hotheadhacker/no-as-a-service)
 
 ---
 

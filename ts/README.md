@@ -1,6 +1,11 @@
 # NoAsAServiceTwo TypeScript SDK
 
-The TypeScript SDK for the NoAsAServiceTwo API. Provides a type-safe, entity-oriented interface with full async/await support.
+
+
+The TypeScript SDK for the NoAsAServiceTwo API — a type-safe, entity-oriented client with full async/await support.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -17,7 +22,9 @@ loading a specific record.
 ```ts
 import { NoAsAServiceTwoSDK } from 'no-as-a-service-two'
 
-const client = new NoAsAServiceTwoSDK({})
+const client = new NoAsAServiceTwoSDK({
+  apikey: process.env.NO-AS-A-SERVICE-TWO_APIKEY,
+})
 ```
 
 ### 3. Load a rejectionreason
@@ -80,7 +87,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new NoAsAServiceTwoSDK()
+const client = new NoAsAServiceTwoSDK({ apikey: '...' })
 const testClient = client.tester()
 ```
 
@@ -116,6 +123,7 @@ const logger = {
 }
 
 const client = new NoAsAServiceTwoSDK({
+  apikey: '...',
   extend: [logger],
 })
 ```
@@ -126,6 +134,7 @@ Create a `.env.local` file at the project root:
 
 ```
 NO-AS-A-SERVICE-TWO_TEST_LIVE=TRUE
+NO-AS-A-SERVICE-TWO_APIKEY=<your-key>
 ```
 
 Then run:
@@ -143,6 +152,7 @@ cd ts && npm test
 
 ```ts
 new NoAsAServiceTwoSDK(options?: {
+  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -153,6 +163,7 @@ new NoAsAServiceTwoSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
