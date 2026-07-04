@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## RejectionReasonEntity
 
 ```python
-rejection_reason = client.rejection_reason
+rejection_reason = client.RejectionReason()
 ```
 
 ### Fields
@@ -96,7 +96,7 @@ rejection_reason = client.rejection_reason
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.rejection_reason.load({"id": "rejection_reason_id"})
+result = client.RejectionReason().load({"id": "rejection_reason_id"})
 ```
 
 ### Common Methods

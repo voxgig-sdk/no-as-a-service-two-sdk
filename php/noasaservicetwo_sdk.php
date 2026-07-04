@@ -233,10 +233,10 @@ class NoAsAServiceTwoSDK
 
     private $_rejection_reason = null;
 
-    // Idiomatic facade: $client->rejection_reason()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias RejectionReason() (PHP method
-    // names are case-insensitive).
-    public function rejection_reason($data = null)
+    // Canonical facade: $client->RejectionReason()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->rejection_reason()
+    // resolves here too.
+    public function RejectionReason($data = null)
     {
         require_once __DIR__ . '/entity/rejection_reason_entity.php';
         if ($data === null) {

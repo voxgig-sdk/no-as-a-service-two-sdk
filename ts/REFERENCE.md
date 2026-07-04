@@ -109,7 +109,7 @@ Alias for `NoAsAServiceTwoSDK.test()`.
 ## RejectionReasonEntity
 
 ```ts
-const rejection_reason = client.rejection_reason
+const rejection_reason = client.RejectionReason()
 ```
 
 ### Fields
@@ -125,7 +125,7 @@ const rejection_reason = client.rejection_reason
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.rejection_reason.load({ id: 'rejection_reason_id' })
+const result = await client.RejectionReason().load({ id: 'rejection_reason_id' })
 ```
 
 ### Common Methods

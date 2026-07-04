@@ -33,10 +33,12 @@ client = NoAsAServiceTwoSDK()
 
 ### 3. Load a rejectionreason
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.rejectionreason.load({"id": "example_id"})
-    print(result)
+    rejectionreason = client.RejectionReason().load({"id": "example_id"})
+    print(rejectionreason)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = NoAsAServiceTwoSDK.test()
 
-result = client.rejectionreason.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+rejectionreason = client.RejectionReason().load({"id": "test01"})
+# rejectionreason contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -218,7 +221,7 @@ API path: `/no`
 
 ### RejectionReason
 
-Create an instance: `const rejection_reason = client.rejection_reason`
+Create an instance: `rejection_reason = client.RejectionReason()`
 
 #### Operations
 
@@ -234,8 +237,8 @@ Create an instance: `const rejection_reason = client.rejection_reason`
 
 #### Example: Load
 
-```ts
-const rejection_reason = await client.rejection_reason.load({ id: 'rejection_reason_id' })
+```python
+rejection_reason = client.RejectionReason().load({"id": "rejection_reason_id"})
 ```
 
 
@@ -309,7 +312,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-rejectionreason = client.rejectionreason
+rejectionreason = client.RejectionReason()
 rejectionreason.load({"id": "example_id"})
 
 # rejectionreason.data_get() now returns the loaded rejectionreason data

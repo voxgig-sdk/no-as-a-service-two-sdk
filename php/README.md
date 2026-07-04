@@ -33,9 +33,10 @@ $client = new NoAsAServiceTwoSDK();
 
 ```php
 try {
-    $result = $client->rejectionreason()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare RejectionReason record (throws on error).
+    $rejectionreason = $client->RejectionReason()->load(["id" => "example_id"]);
+    print_r($rejectionreason);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = NoAsAServiceTwoSDK::test();
+$client = NoAsAServiceTwoSDK::test([
+    "entity" => ["rejectionreason" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->rejectionreason()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$rejectionreason = $client->RejectionReason()->load(["id" => "test01"]);
+print_r($rejectionreason);
 ```
 
 ### Use a custom fetch function
@@ -223,7 +228,7 @@ API path: `/no`
 
 ### RejectionReason
 
-Create an instance: `const rejection_reason = client.rejection_reason`
+Create an instance: `$rejection_reason = $client->RejectionReason();`
 
 #### Operations
 
@@ -239,8 +244,9 @@ Create an instance: `const rejection_reason = client.rejection_reason`
 
 #### Example: Load
 
-```ts
-const rejection_reason = await client.rejection_reason.load({ id: 'rejection_reason_id' })
+```php
+// load() returns the bare RejectionReason record (throws on error).
+$rejection_reason = $client->RejectionReason()->load(["id" => "rejection_reason_id"]);
 ```
 
 
@@ -315,7 +321,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$rejectionreason = $client->rejectionreason();
+$rejectionreason = $client->RejectionReason();
 $rejectionreason->load(["id" => "example_id"]);
 
 // $rejectionreason->dataGet() now returns the loaded rejectionreason data

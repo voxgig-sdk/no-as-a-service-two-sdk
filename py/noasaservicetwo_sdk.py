@@ -220,25 +220,15 @@ class NoAsAServiceTwoSDK:
         }
 
 
-    @property
-    def rejection_reason(self):
-        """Idiomatic facade: client.rejection_reason.list() / client.rejection_reason.load({"id": ...})."""
-        from entity.rejection_reason_entity import RejectionReasonEntity
-        cached = getattr(self, "_rejection_reason", None)
-        if cached is None:
-            cached = RejectionReasonEntity(self, None)
-            self._rejection_reason = cached
-        return cached
-
-    def RejectionReason(self, data=None):
-        # Deprecated: use client.rejection_reason instead.
+    def RejectionReason(self, data=None) -> "RejectionReasonEntity":
+        """Entity factory: client.RejectionReason().list({}) / client.RejectionReason().load({"id": ...})."""
         from entity.rejection_reason_entity import RejectionReasonEntity
         return RejectionReasonEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "NoAsAServiceTwoSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class NoAsAServiceTwoSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.rejection_reason_entity import RejectionReasonEntity

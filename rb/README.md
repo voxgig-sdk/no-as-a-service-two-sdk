@@ -32,8 +32,9 @@ client = NoAsAServiceTwoSDK.new
 
 ```ruby
 begin
-  result = client.rejectionreason.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare RejectionReason record (raises on error).
+  rejectionreason = client.RejectionReason.load({ "id" => "example_id" })
+  puts rejectionreason
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = NoAsAServiceTwoSDK.test
+client = NoAsAServiceTwoSDK.test({
+  "entity" => { "rejectionreason" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.rejectionreason.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+rejectionreason = client.RejectionReason.load({ "id" => "test01" })
+puts rejectionreason
 ```
 
 ### Use a custom fetch function
@@ -218,7 +223,7 @@ API path: `/no`
 
 ### RejectionReason
 
-Create an instance: `const rejection_reason = client.rejection_reason`
+Create an instance: `rejection_reason = client.RejectionReason`
 
 #### Operations
 
@@ -234,8 +239,9 @@ Create an instance: `const rejection_reason = client.rejection_reason`
 
 #### Example: Load
 
-```ts
-const rejection_reason = await client.rejection_reason.load({ id: 'rejection_reason_id' })
+```ruby
+# load returns the bare RejectionReason record (raises on error).
+rejection_reason = client.RejectionReason.load({ "id" => "rejection_reason_id" })
 ```
 
 
@@ -310,7 +316,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-rejectionreason = client.rejectionreason
+rejectionreason = client.RejectionReason
 rejectionreason.load({ "id" => "example_id" })
 
 # rejectionreason.data_get now returns the loaded rejectionreason data

@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## RejectionReasonEntity
 
 ```ruby
-rejection_reason = client.rejection_reason
+rejection_reason = client.RejectionReason
 ```
 
 ### Fields
@@ -102,7 +102,7 @@ rejection_reason = client.rejection_reason
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.rejection_reason.load({ "id" => "rejection_reason_id" })
+result = client.RejectionReason.load({ "id" => "rejection_reason_id" })
 ```
 
 ### Common Methods

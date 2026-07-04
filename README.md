@@ -26,9 +26,9 @@ import { NoAsAServiceTwoSDK } from '@voxgig-sdk/no-as-a-service-two'
 
 const client = new NoAsAServiceTwoSDK()
 
-// Load rejectionreason data
-const rejectionreason = await client.rejectionreason.load({})
-console.log(rejectionreason.data)
+// Load rejectionreason data (returns a RejectionReason)
+const rejectionreason = await client.RejectionReason().load()
+console.log(rejectionreason)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,8 +84,8 @@ from noasaservicetwo_sdk import NoAsAServiceTwoSDK
 client = NoAsAServiceTwoSDK()
 
 
-# Load a specific rejectionreason
-rejectionreason = client.rejectionreason.load({"id": "example_id"})
+# Load a specific rejectionreason (returns the record, raises on error)
+rejectionreason = client.RejectionReason().load({"id": "example_id"})
 print(rejectionreason)
 ```
 
@@ -98,8 +98,8 @@ require_once 'noasaservicetwo_sdk.php';
 $client = new NoAsAServiceTwoSDK();
 
 
-// Load a specific rejectionreason
-$rejectionreason = $client->rejectionreason()->load(["id" => "example_id"]);
+// Load a specific rejectionreason (returns the bare record; throws on error)
+$rejectionreason = $client->RejectionReason()->load(["id" => "example_id"]);
 print_r($rejectionreason);
 ```
 
@@ -123,8 +123,8 @@ require_relative "NoAsAServiceTwo_sdk"
 client = NoAsAServiceTwoSDK.new
 
 
-# Load a specific rejectionreason
-rejectionreason = client.rejectionreason.load({ "id" => "example_id" })
+# Load a specific rejectionreason (returns the bare record; raises on error)
+rejectionreason = client.RejectionReason.load({ "id" => "example_id" })
 puts rejectionreason
 ```
 
@@ -137,7 +137,7 @@ local client = sdk.new()
 
 
 -- Load a specific rejectionreason
-local rejectionreason, err = client:rejectionreason():load({ id = "example_id" })
+local rejectionreason, err = client:RejectionReason():load({ id = "example_id" })
 print(rejectionreason)
 ```
 
@@ -150,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = NoAsAServiceTwoSDK.test()
-const result = await client.rejectionreason.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const rejectionreason = await client.RejectionReason().load({ id: 'test01' })
+// rejectionreason is a bare RejectionReason populated with mock data
+console.log(rejectionreason)
 ```
 
 ### Python
 
 ```python
 client = NoAsAServiceTwoSDK.test()
-result = client.rejectionreason.load({"id": "test01"})
+rejectionreason = client.RejectionReason().load({"id": "test01"})
+print(rejectionreason)
 ```
 
 ### PHP
 
 ```php
-$client = NoAsAServiceTwoSDK::test();
-$result = $client->rejectionreason()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = NoAsAServiceTwoSDK::test([
+    "entity" => ["rejectionreason" => ["test01" => ["id" => "test01"]]],
+]);
+$rejectionreason = $client->RejectionReason()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -180,15 +185,18 @@ result, err := client.RejectionReason(nil).Load(
 ### Ruby
 
 ```ruby
-client = NoAsAServiceTwoSDK.test
-result = client.rejectionreason.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = NoAsAServiceTwoSDK.test({
+  "entity" => { "rejectionreason" => { "test01" => { "id" => "test01" } } },
+})
+rejectionreason = client.RejectionReason.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:rejectionreason():load({ id = "test01" })
+local result, err = client:RejectionReason():load({ id = "test01" })
 ```
 
 ## How it works
@@ -236,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

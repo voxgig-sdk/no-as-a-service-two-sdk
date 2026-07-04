@@ -204,14 +204,7 @@ class NoAsAServiceTwoSDK {
 
 
 
-  _rejection_reason?: RejectionReasonEntity
-
-  // Idiomatic facade: `client.rejection_reason.list()` / `client.rejection_reason.load({ id })`.
-  get rejection_reason(): RejectionReasonEntity {
-    return (this._rejection_reason ??= new RejectionReasonEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.rejection_reason` instead. */
+  // Entity access: `client.RejectionReason().list()` / `client.RejectionReason().load({ id })`.
   RejectionReason(data?: any) {
     const self = this
     return new RejectionReasonEntity(self,data)

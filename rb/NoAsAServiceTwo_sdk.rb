@@ -208,13 +208,7 @@ class NoAsAServiceTwoSDK
   end
 
 
-  # Idiomatic facade: client.rejection_reason.list / client.rejection_reason.load({ "id" => ... })
-  def rejection_reason
-    require_relative 'entity/rejection_reason_entity'
-    @rejection_reason ||= RejectionReasonEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.rejection_reason instead.
+  # Canonical facade: client.RejectionReason.list / client.RejectionReason.load({ "id" => ... })
   def RejectionReason(data = nil)
     require_relative 'entity/rejection_reason_entity'
     RejectionReasonEntity.new(self, data)
