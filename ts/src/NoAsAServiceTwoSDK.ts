@@ -2,6 +2,8 @@
 
 import { RejectionReasonEntity } from './entity/RejectionReasonEntity'
 
+export type * from './NoAsAServiceTwoTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class NoAsAServiceTwoSDK {
 
 
 
+  _rejection_reason?: RejectionReasonEntity
+
+  // Idiomatic facade: `client.rejection_reason.list()` / `client.rejection_reason.load({ id })`.
+  get rejection_reason(): RejectionReasonEntity {
+    return (this._rejection_reason ??= new RejectionReasonEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.rejection_reason` instead. */
   RejectionReason(data?: any) {
     const self = this
     return new RejectionReasonEntity(self,data)

@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -110,7 +109,7 @@ Alias for `NoAsAServiceTwoSDK.test()`.
 ## RejectionReasonEntity
 
 ```ts
-const rejection_reason = client.RejectionReason()
+const rejection_reason = client.rejection_reason
 ```
 
 ### Fields
@@ -126,7 +125,7 @@ const rejection_reason = client.RejectionReason()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.RejectionReason().load({ id: 'rejection_reason_id' })
+const result = await client.rejection_reason.load({ id: 'rejection_reason_id' })
 ```
 
 ### Common Methods

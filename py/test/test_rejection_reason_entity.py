@@ -49,8 +49,7 @@ class TestRejectionReasonEntity:
         # LOAD
         rejection_reason_ref01_ent = client.RejectionReason(None)
         rejection_reason_ref01_match_dt0 = {}
-        rejection_reason_ref01_data_dt0_loaded, err = rejection_reason_ref01_ent.load(rejection_reason_ref01_match_dt0, None)
-        assert err is None
+        rejection_reason_ref01_data_dt0_loaded = rejection_reason_ref01_ent.load(rejection_reason_ref01_match_dt0, None)
         assert rejection_reason_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _rejection_reason_basic_setup(extra):
         "NOASASERVICETWO_TEST_REJECTION_REASON_ENTID": idmap,
         "NOASASERVICETWO_TEST_LIVE": "FALSE",
         "NOASASERVICETWO_TEST_EXPLAIN": "FALSE",
-        "NOASASERVICETWO_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _rejection_reason_basic_setup(extra):
     if env.get("NOASASERVICETWO_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("NOASASERVICETWO_APIKEY"),
             },
             extra or {},
         ])

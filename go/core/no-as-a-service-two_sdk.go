@@ -245,6 +245,9 @@ func (sdk *NoAsAServiceTwoSDK) Direct(fetchargs map[string]any) (map[string]any,
 }
 
 
+// RejectionReason returns a RejectionReason entity bound to this client.
+// Idiomatic usage: client.RejectionReason(nil).List(nil, nil) or
+// client.RejectionReason(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *NoAsAServiceTwoSDK) RejectionReason(data map[string]any) NoAsAServiceTwoEntity {
 	return NewRejectionReasonEntityFunc(sdk, data)
 }

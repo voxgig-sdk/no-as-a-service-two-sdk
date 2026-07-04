@@ -49,8 +49,7 @@ class RejectionReasonEntityTest extends TestCase
         // LOAD
         $rejection_reason_ref01_ent = $client->RejectionReason(null);
         $rejection_reason_ref01_match_dt0 = [];
-        [$rejection_reason_ref01_data_dt0_loaded, $err] = $rejection_reason_ref01_ent->load($rejection_reason_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $rejection_reason_ref01_data_dt0_loaded = $rejection_reason_ref01_ent->load($rejection_reason_ref01_match_dt0, null);
         $this->assertNotNull($rejection_reason_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function rejection_reason_basic_setup($extra)
         "NOASASERVICETWO_TEST_REJECTION_REASON_ENTID" => $idmap,
         "NOASASERVICETWO_TEST_LIVE" => "FALSE",
         "NOASASERVICETWO_TEST_EXPLAIN" => "FALSE",
-        "NOASASERVICETWO_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function rejection_reason_basic_setup($extra)
     if ($env["NOASASERVICETWO_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["NOASASERVICETWO_APIKEY"],
             ],
             $extra ?? [],
         ]);

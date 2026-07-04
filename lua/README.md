@@ -9,12 +9,9 @@ The Lua SDK for the NoAsAServiceTwo API — an entity-oriented client using Lua 
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-no-as-a-service-two
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("no-as-a-service-two_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("NO-AS-A-SERVICE-TWO_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 3. Load a rejectionreason
 
 ```lua
-local result, err = client:RejectionReason():load({ id = "example_id" })
+local result, err = client:rejectionreason():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -87,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:NoAsAServiceTwo():load({ id = "test01" })
+local result, err = client:rejectionreason():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -120,8 +115,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-NO-AS-A-SERVICE-TWO_TEST_LIVE=TRUE
-NO-AS-A-SERVICE-TWO_APIKEY=<your-key>
+NO_AS_A_SERVICE_TWO_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -144,7 +138,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -221,7 +214,7 @@ API path: `/no`
 
 ### RejectionReason
 
-Create an instance: `const rejection_reason = client.RejectionReason()`
+Create an instance: `const rejection_reason = client.rejection_reason`
 
 #### Operations
 
@@ -238,7 +231,7 @@ Create an instance: `const rejection_reason = client.RejectionReason()`
 #### Example: Load
 
 ```ts
-const rejection_reason = await client.RejectionReason().load({ id: 'rejection_reason_id' })
+const rejection_reason = await client.rejection_reason.load({ id: 'rejection_reason_id' })
 ```
 
 
@@ -313,11 +306,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local rejectionreason = client:rejectionreason()
+rejectionreason:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- rejectionreason:data_get() now returns the loaded rejectionreason data
+-- rejectionreason:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

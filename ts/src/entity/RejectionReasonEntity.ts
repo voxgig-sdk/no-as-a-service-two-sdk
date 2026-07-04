@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  RejectionReason,
+  RejectionReasonLoadMatch,
+} from '../NoAsAServiceTwoTypes'
 
 // TODO: needs Entity superclass
-class RejectionReasonEntity extends NoAsAServiceTwoEntityBase {
+class RejectionReasonEntity extends NoAsAServiceTwoEntityBase<RejectionReason> {
 
   constructor(client: NoAsAServiceTwoSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class RejectionReasonEntity extends NoAsAServiceTwoEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: RejectionReasonLoadMatch, ctrl?: Control): Promise<RejectionReason> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class RejectionReasonEntity extends NoAsAServiceTwoEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<RejectionReason> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

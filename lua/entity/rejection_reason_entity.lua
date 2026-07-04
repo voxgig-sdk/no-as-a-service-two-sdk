@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch RejectionReasonLoadMatch
+---@param ctrl? table
+---@return RejectionReason
+---@return string? err
 function RejectionReasonEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

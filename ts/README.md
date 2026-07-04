@@ -9,9 +9,12 @@ The TypeScript SDK for the NoAsAServiceTwo API — a type-safe, entity-oriented 
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/no-as-a-service-two
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/no-as-a-service-two-sdk/releases](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { NoAsAServiceTwoSDK } from 'no-as-a-service-two'
+import { NoAsAServiceTwoSDK } from '@voxgig-sdk/no-as-a-service-two'
 
-const client = new NoAsAServiceTwoSDK({
-  apikey: process.env.NO-AS-A-SERVICE-TWO_APIKEY,
-})
+const client = new NoAsAServiceTwoSDK()
 ```
 
 ### 3. Load a rejectionreason
 
 ```ts
-const result = await client.RejectionReason().load({ id: 'example_id' })
+const result = await client.rejectionreason.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = NoAsAServiceTwoSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.rejectionreason.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new NoAsAServiceTwoSDK({ apikey: '...' })
+const client = new NoAsAServiceTwoSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.rejectionreason
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new NoAsAServiceTwoSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new NoAsAServiceTwoSDK({
 Create a `.env.local` file at the project root:
 
 ```
-NO-AS-A-SERVICE-TWO_TEST_LIVE=TRUE
-NO-AS-A-SERVICE-TWO_APIKEY=<your-key>
+NO_AS_A_SERVICE_TWO_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new NoAsAServiceTwoSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new NoAsAServiceTwoSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -266,7 +263,7 @@ API path: `/no`
 
 ### RejectionReason
 
-Create an instance: `const rejection_reason = client.RejectionReason()`
+Create an instance: `const rejection_reason = client.rejection_reason`
 
 #### Operations
 
@@ -283,7 +280,7 @@ Create an instance: `const rejection_reason = client.RejectionReason()`
 #### Example: Load
 
 ```ts
-const rejection_reason = await client.RejectionReason().load({ id: 'rejection_reason_id' })
+const rejection_reason = await client.rejection_reason.load({ id: 'rejection_reason_id' })
 ```
 
 
@@ -344,7 +341,7 @@ no-as-a-service-two/
 Import the SDK from the package root:
 
 ```ts
-import { NoAsAServiceTwoSDK } from 'no-as-a-service-two'
+import { NoAsAServiceTwoSDK } from '@voxgig-sdk/no-as-a-service-two'
 ```
 
 ### Entity state
@@ -354,11 +351,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const rejectionreason = client.rejectionreason
+await rejectionreason.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// rejectionreason.data() now returns the loaded rejectionreason data
+// rejectionreason.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

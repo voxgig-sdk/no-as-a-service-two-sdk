@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -84,7 +83,7 @@ same parameters as `direct()`.
 ## RejectionReasonEntity
 
 ```lua
-local rejection_reason = client:RejectionReason(nil)
+local rejection_reason = client:rejection_reason(nil)
 ```
 
 ### Fields
@@ -100,7 +99,7 @@ local rejection_reason = client:RejectionReason(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:RejectionReason():load({ id = "rejection_reason_id" })
+local result, err = client:rejection_reason():load({ id = "rejection_reason_id" })
 ```
 
 ### Common Methods

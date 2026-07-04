@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:rejection_reason():list() / client:rejection_reason():load({ id = ... })
+function NoAsAServiceTwoSDK:rejection_reason(data)
+  local EntityMod = require("entity.rejection_reason_entity")
+  if data == nil then
+    if self._rejection_reason == nil then
+      self._rejection_reason = EntityMod.new(self, nil)
+    end
+    return self._rejection_reason
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:rejection_reason() instead.
 function NoAsAServiceTwoSDK:RejectionReason(data)
   local EntityMod = require("entity.rejection_reason_entity")
   return EntityMod.new(self, data)

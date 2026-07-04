@@ -21,7 +21,7 @@ class TestRejectionReasonDirect:
         client = setup["client"]
 
 
-        result, err = client.direct({
+        result = client.direct({
             "path": "no",
             "method": "GET",
             "params": {},
@@ -30,8 +30,8 @@ class TestRejectionReasonDirect:
             # Live mode is lenient: synthetic IDs frequently 4xx. Skip
             # rather than fail when the load endpoint isn't reachable
             # with the IDs we can construct from setup.idmap.
-            if err is not None:
-                pytest.skip(f"load call failed (likely synthetic IDs against live API): {err}")
+            if result.get("err") is not None:
+                pytest.skip(f"load call failed (likely synthetic IDs against live API): {result.get('err')}")
                 return
             if not result.get("ok"):
                 pytest.skip("load call not ok (likely synthetic IDs against live API)")
@@ -41,7 +41,6 @@ class TestRejectionReasonDirect:
                 pytest.skip(f"expected 2xx status, got {status}")
                 return
         else:
-            assert err is None
             assert result["ok"] is True
             assert helpers.to_int(result["status"]) == 200
             assert result["data"] is not None
@@ -59,14 +58,12 @@ def _rejection_reason_direct_setup(mockres):
     env = runner.env_override({
         "NOASASERVICETWO_TEST_REJECTION_REASON_ENTID": {},
         "NOASASERVICETWO_TEST_LIVE": "FALSE",
-        "NOASASERVICETWO_APIKEY": "NONE",
     })
 
     live = env.get("NOASASERVICETWO_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("NOASASERVICETWO_APIKEY"),
         }
         client = NoAsAServiceTwoSDK(merged_opts)
         return {
