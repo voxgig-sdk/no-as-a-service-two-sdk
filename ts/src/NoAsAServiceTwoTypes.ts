@@ -9,5 +9,7 @@ export interface RejectionReason {
   reason: string
 }
 
-export type RejectionReasonLoadMatch = Partial<RejectionReason>
+export interface RejectionReasonLoadMatch {
+  reason?: string
+}
 

@@ -17,7 +17,7 @@ RejectionReason = Struct.new(
   keyword_init: true
 )
 
-# Match filter for RejectionReason#load (any subset of RejectionReason fields).
+# Request payload for RejectionReason#load.
 #
 # @!attribute [rw] reason
 #   @return [String, nil]

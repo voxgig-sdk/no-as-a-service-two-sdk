@@ -221,7 +221,7 @@ class NoAsAServiceTwoSDK:
 
 
     def RejectionReason(self, data=None) -> "RejectionReasonEntity":
-        """Entity factory: client.RejectionReason().list({}) / client.RejectionReason().load({"id": ...})."""
+        """Entity factory: client.RejectionReason().list() / client.RejectionReason().load({"id": ...})."""
         from entity.rejection_reason_entity import RejectionReasonEntity
         return RejectionReasonEntity(self, data)
 

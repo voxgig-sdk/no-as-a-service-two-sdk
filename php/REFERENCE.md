@@ -8,7 +8,7 @@ Complete API reference for the NoAsAServiceTwo PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/no-as-a-service-two_sdk.php';
+require_once __DIR__ . '/noasaservicetwo_sdk.php';
 
 $client = new NoAsAServiceTwoSDK($options);
 ```
@@ -45,11 +45,11 @@ $client = NoAsAServiceTwoSDK::test();
 
 Create a new `RejectionReasonEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): NoAsAServiceTwoUtility`
 
 Return a copy of the SDK utility object.
 
@@ -92,7 +92,7 @@ $rejection_reason = $client->RejectionReason();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `reason` | ``$STRING`` | Yes |  |
+| `reason` | `string` | Yes |  |
 
 ### Operations
 
@@ -101,24 +101,24 @@ $rejection_reason = $client->RejectionReason();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->RejectionReason()->load(["id" => "rejection_reason_id"]);
+$result = $client->RejectionReason()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -127,7 +127,7 @@ Set the entity match criteria.
 Create a new `RejectionReasonEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

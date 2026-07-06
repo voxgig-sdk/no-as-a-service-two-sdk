@@ -8,7 +8,7 @@ Complete API reference for the NoAsAServiceTwo Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'no-as-a-service-two_sdk'
+require_relative 'NoAsAServiceTwo_sdk'
 
 client = NoAsAServiceTwoSDK.new(options)
 ```
@@ -93,7 +93,7 @@ rejection_reason = client.RejectionReason
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `reason` | ``$STRING`` | Yes |  |
+| `reason` | `String` | Yes |  |
 
 ### Operations
 
@@ -102,7 +102,7 @@ rejection_reason = client.RejectionReason
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.RejectionReason.load({ "id" => "rejection_reason_id" })
+result = client.RejectionReason.load()
 ```
 
 ### Common Methods

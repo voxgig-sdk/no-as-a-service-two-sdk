@@ -16,7 +16,6 @@ go build -o no-as-a-service-two-cli ./...
 
 ```sh
 # One-shot: arguments form a single AQL expression
-./no-as-a-service-two-cli list rejection_reason
 ./no-as-a-service-two-cli load 1 rejection_reason
 ./no-as-a-service-two-cli load '{id:1}' rejection_reason
 
@@ -28,9 +27,7 @@ go build -o no-as-a-service-two-cli ./...
 
 | Word     | Signatures                                   | Description                |
 |----------|----------------------------------------------|----------------------------|
-| `list`   | `[entity]` · `[query entity]`                | List records               |
 | `load`   | `[entity]` · `[query entity]`                | Load a single record       |
-| `update` | `[entity]` · `[query entity]`                | Update a record            |
 
 `query` is either a Map (`{id:1}`) or a Scalar (`1`, treated as `{id:1}`).
 `entity` is one of the SDK's entity names (auto-quoted as an atom).

@@ -8,7 +8,7 @@ Complete API reference for the NoAsAServiceTwo Python SDK.
 ### Constructor
 
 ```python
-from no-as-a-service-two_sdk import NoAsAServiceTwoSDK
+from noasaservicetwo_sdk import NoAsAServiceTwoSDK
 
 client = NoAsAServiceTwoSDK(options)
 ```
@@ -87,7 +87,7 @@ rejection_reason = client.RejectionReason()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `reason` | ``$STRING`` | Yes |  |
+| `reason` | `str` | Yes |  |
 
 ### Operations
 
@@ -96,7 +96,7 @@ rejection_reason = client.RejectionReason()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.RejectionReason().load({"id": "rejection_reason_id"})
+result = client.RejectionReason().load()
 ```
 
 ### Common Methods

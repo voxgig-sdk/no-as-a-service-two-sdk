@@ -13,8 +13,7 @@ type RejectionReason struct {
 	Reason string `json:"reason"`
 }
 
-// RejectionReasonLoadMatch mirrors the rejection_reason fields as an all-optional match
-// filter (Go analog of Partial<RejectionReason>).
+// RejectionReasonLoadMatch is the typed request payload for RejectionReason.LoadTyped.
 type RejectionReasonLoadMatch struct {
 	Reason *string `json:"reason,omitempty"`
 }

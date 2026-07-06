@@ -18,7 +18,7 @@ class RejectionReason
     public string $reason;
 }
 
-/** Match filter for RejectionReason#load (any subset of RejectionReason fields). */
+/** Request payload for RejectionReason#load. */
 class RejectionReasonLoadMatch
 {
     public ?string $reason = null;

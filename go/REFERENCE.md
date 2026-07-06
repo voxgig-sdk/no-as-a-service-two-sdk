@@ -97,7 +97,7 @@ rejection_reason := client.RejectionReason(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `reason` | ``$STRING`` | Yes |  |
+| `reason` | `string` | Yes |  |
 
 ### Operations
 
@@ -106,7 +106,7 @@ rejection_reason := client.RejectionReason(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.RejectionReason(nil).Load(map[string]any{"id": "rejection_reason_id"}, nil)
+result, err := client.RejectionReason(nil).Load(nil, nil)
 ```
 
 ### Common Methods

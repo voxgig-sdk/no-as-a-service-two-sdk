@@ -116,7 +116,7 @@ const rejection_reason = client.RejectionReason()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `reason` | ``$STRING`` | Yes |  |
+| `reason` | `string` | Yes |  |
 
 ### Operations
 
@@ -125,7 +125,7 @@ const rejection_reason = client.RejectionReason()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.RejectionReason().load({ id: 'rejection_reason_id' })
+const result = await client.RejectionReason().load()
 ```
 
 ### Common Methods

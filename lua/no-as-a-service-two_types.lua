@@ -10,6 +10,7 @@
 ---@field reason string
 
 ---@class RejectionReasonLoadMatch
+---@field reason? string
 
 local M = {}
 

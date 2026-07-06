@@ -90,7 +90,7 @@ local rejection_reason = client:RejectionReason(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `reason` | ``$STRING`` | Yes |  |
+| `reason` | `string` | Yes |  |
 
 ### Operations
 
@@ -99,7 +99,7 @@ local rejection_reason = client:RejectionReason(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:RejectionReason():load({ id = "rejection_reason_id" })
+local result, err = client:RejectionReason():load()
 ```
 
 ### Common Methods
