@@ -24,8 +24,10 @@ main: {
           url: "http://localhost:3000"
         }
       ]
+      summary: "No-as-a-Service (NaaS) is a simple API that returns a random rejection reason."
       title: "No-as-a-Service API"
       version: "1.0.0"
+      website: "https://github.com/hotheadhacker/no-as-a-service"
     }
   }
 }

@@ -90,7 +90,8 @@ same parameters as `Direct()`.
 ## RejectionReasonEntity
 
 ```go
-rejection_reason := client.RejectionReason(nil)
+rejectionReason := client.RejectionReason(nil)
+fmt.Println(rejectionReason.GetName()) // "rejection_reason"
 ```
 
 ### Fields
@@ -107,6 +108,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.RejectionReason(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

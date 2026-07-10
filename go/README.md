@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // Load a single rejectionreason — the value is the loaded record.
-    rejectionreason, err := client.RejectionReason(nil).Load(nil, nil)
+    // Load a single rejectionReason — the value is the loaded record.
+    rejectionReason, err := client.RejectionReason(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(rejectionreason)
+    fmt.Println(rejectionReason)
 }
 ```
 
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-rejectionreason, err := client.RejectionReason(nil).Load(
+rejectionReason, err := client.RejectionReason(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(rejectionreason) // the returned mock data
+fmt.Println(rejectionReason) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -245,9 +245,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    rejectionreason, err := client.RejectionReason(nil).Load(nil, nil)
+    rejectionReason, err := client.RejectionReason(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // rejectionreason is the returned record
+    // rejectionReason is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -271,7 +271,7 @@ API path: `/no`
 
 ### RejectionReason
 
-Create an instance: `rejection_reason := client.RejectionReason(nil)`
+Create an instance: `rejectionReason := client.RejectionReason(nil)`
 
 #### Operations
 
@@ -288,11 +288,11 @@ Create an instance: `rejection_reason := client.RejectionReason(nil)`
 #### Example: Load
 
 ```go
-rejection_reason, err := client.RejectionReason(nil).Load(nil, nil)
+rejectionReason, err := client.RejectionReason(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(rejection_reason) // the loaded record
+fmt.Println(rejectionReason) // the loaded record
 ```
 
 
