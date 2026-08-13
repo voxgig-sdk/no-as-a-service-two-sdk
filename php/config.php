@@ -47,6 +47,7 @@ class NoAsAServiceTwoConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/no',
                   'parts' => [

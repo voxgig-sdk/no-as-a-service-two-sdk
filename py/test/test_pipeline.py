@@ -16,11 +16,11 @@
 import pytest
 
 from noasaservicetwo_sdk import NoAsAServiceTwoSDK
-from core.error import NoAsAServiceTwoError
-from core.result import NoAsAServiceTwoResult
-from core.response import NoAsAServiceTwoResponse
-from core.spec import NoAsAServiceTwoSpec
-from feature.base_feature import NoAsAServiceTwoBaseFeature
+from noasaservicetwo_sdk.core.error import NoAsAServiceTwoError
+from noasaservicetwo_sdk.core.result import NoAsAServiceTwoResult
+from noasaservicetwo_sdk.core.response import NoAsAServiceTwoResponse
+from noasaservicetwo_sdk.core.spec import NoAsAServiceTwoSpec
+from noasaservicetwo_sdk.feature.base_feature import NoAsAServiceTwoBaseFeature
 
 
 def _client():

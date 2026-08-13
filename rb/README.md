@@ -34,7 +34,7 @@ client = NoAsAServiceTwoSDK.new
 
 ```ruby
 begin
-  # load returns the bare RejectionReason record (raises on error).
+  # load returns the ENTITY — call data_get for the RejectionReason record (raises on error).
   rejectionreason = client.RejectionReason.load()
   puts rejectionreason
 rescue => err
@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = NoAsAServiceTwoSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 rejectionreason = client.RejectionReason.load()
 puts rejectionreason
 ```
@@ -264,7 +265,7 @@ Create an instance: `rejection_reason = client.RejectionReason`
 #### Example: Load
 
 ```ruby
-# load returns the bare RejectionReason record (raises on error).
+# load returns the ENTITY — call data_get for the RejectionReason record (raises on error).
 rejection_reason = client.RejectionReason.load()
 ```
 

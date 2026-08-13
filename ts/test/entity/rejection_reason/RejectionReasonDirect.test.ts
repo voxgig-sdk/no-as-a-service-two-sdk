@@ -19,11 +19,15 @@ import {
 describe('RejectionReasonDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when NOASASERVICETWO_TEST_LIVE=TRUE.
-  afterEach(liveDelay('NOASASERVICETWO_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when NO_AS_A_SERVICE_TWO_TEST_LIVE=TRUE.
+  afterEach(liveDelay('NO_AS_A_SERVICE_TWO_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new NoAsAServiceTwoSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -72,17 +76,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'NOASASERVICETWO_TEST_REJECTION_REASON_ENTID': {},
-    'NOASASERVICETWO_TEST_LIVE': 'FALSE',
+    'NO_AS_A_SERVICE_TWO_TEST_REJECTION_REASON_ENTID': {},
+    'NO_AS_A_SERVICE_TWO_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.NOASASERVICETWO_TEST_LIVE
+  const live = 'TRUE' === env.NO_AS_A_SERVICE_TWO_TEST_LIVE
 
   if (live) {
     const client = new NoAsAServiceTwoSDK({
     })
 
-    let idmap: any = env['NOASASERVICETWO_TEST_REJECTION_REASON_ENTID']
+    let idmap: any = env['NO_AS_A_SERVICE_TWO_TEST_REJECTION_REASON_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

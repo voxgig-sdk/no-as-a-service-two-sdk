@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from noasaservicetwo_sdk.utility.voxgig_struct import voxgig_struct as vs
 from noasaservicetwo_sdk import NoAsAServiceTwoSDK
-from core import helpers
+from noasaservicetwo_sdk.core import helpers
 from test import runner
 
 
@@ -56,11 +56,11 @@ def _rejection_reason_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "NOASASERVICETWO_TEST_REJECTION_REASON_ENTID": {},
-        "NOASASERVICETWO_TEST_LIVE": "FALSE",
+        "NO_AS_A_SERVICE_TWO_TEST_REJECTION_REASON_ENTID": {},
+        "NO_AS_A_SERVICE_TWO_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("NOASASERVICETWO_TEST_LIVE") == "TRUE"
+    live = env.get("NO_AS_A_SERVICE_TWO_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = NoAsAServiceTwoSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = NoAsAServiceTwoSDK.test({
+  entity: {
+    rejection_reason: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const rejectionreason = await client.RejectionReason().load()
-// rejectionreason is a bare RejectionReason populated with mock data
+// rejectionreason is the RejectionReason entity, populated with mock data
+// — call rejectionreason.data() for the record itself
 console.log(rejectionreason)
 ```
 
@@ -182,7 +191,7 @@ require_once 'noasaservicetwo_sdk.php';
 $client = new NoAsAServiceTwoSDK();
 
 
-// Load a specific rejectionreason (returns the bare record; throws on error)
+// Load a specific rejectionreason (returns the ENTITY; call data_get() for the record; throws on error)
 $rejectionreason = $client->RejectionReason()->load();
 print_r($rejectionreason);
 ```
@@ -210,7 +219,7 @@ require_relative "NoAsAServiceTwo_sdk"
 client = NoAsAServiceTwoSDK.new
 
 
-# Load a specific rejectionreason (returns the bare record; raises on error)
+# Load a specific rejectionreason (returns the ENTITY; call data_get for the record)
 rejectionreason = client.RejectionReason.load()
 puts rejectionreason
 ```
@@ -344,6 +353,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://github.com/hotheadhacker/no-as-a-service](https://github.com/hotheadhacker/no-as-a-service)
 

@@ -26,8 +26,8 @@ import {
 describe('RejectionReasonEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when NOASASERVICETWO_TEST_LIVE=TRUE.
-  afterEach(liveDelay('NOASASERVICETWO_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when NO_AS_A_SERVICE_TWO_TEST_LIVE=TRUE.
+  afterEach(liveDelay('NO_AS_A_SERVICE_TWO_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = NoAsAServiceTwoSDK.test()
@@ -62,7 +62,7 @@ describe('RejectionReasonEntity', async () => {
     // LOAD
     const rejection_reason_ref01_ent = client.RejectionReason()
     const rejection_reason_ref01_match_dt0: any = {}
-    const rejection_reason_ref01_data_dt0 = await rejection_reason_ref01_ent.load(rejection_reason_ref01_match_dt0)
+    const rejection_reason_ref01_data_dt0 = (await rejection_reason_ref01_ent.load(rejection_reason_ref01_match_dt0)).data()
     assert(null != rejection_reason_ref01_data_dt0)
 
 

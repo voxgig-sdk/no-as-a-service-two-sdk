@@ -60,11 +60,11 @@ function rejection_reason_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["NOASASERVICETWO_TEST_REJECTION_REASON_ENTID"] = {},
-    ["NOASASERVICETWO_TEST_LIVE"] = "FALSE",
+    ["NO_AS_A_SERVICE_TWO_TEST_REJECTION_REASON_ENTID"] = {},
+    ["NO_AS_A_SERVICE_TWO_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["NOASASERVICETWO_TEST_LIVE"] == "TRUE"
+  local live = env["NO_AS_A_SERVICE_TWO_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from noasaservicetwo_sdk.utility.voxgig_struct import voxgig_struct as vs
 from noasaservicetwo_sdk import NoAsAServiceTwoSDK
-from core import helpers
+from noasaservicetwo_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -36,7 +36,7 @@ class TestRejectionReasonEntity:
         # without an *_ENTID env override, those IDs hit the live API and 4xx.
         if setup.get("synthetic_only"):
             pytest.skip("live entity test uses synthetic IDs from fixture — "
-                        "set NOASASERVICETWO_TEST_REJECTION_REASON_ENTID JSON to run live")
+                        "set NO_AS_A_SERVICE_TWO_TEST_REJECTION_REASON_ENTID JSON to run live")
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -83,21 +83,21 @@ def _rejection_reason_basic_setup(extra):
     # mode is on without a real override, the basic test runs against synthetic
     # IDs from the fixture and 4xx's. We surface this so the test can skip.
     _entid_env_raw = os.environ.get(
-        "NOASASERVICETWO_TEST_REJECTION_REASON_ENTID")
+        "NO_AS_A_SERVICE_TWO_TEST_REJECTION_REASON_ENTID")
     _idmap_overridden = _entid_env_raw is not None and _entid_env_raw.strip().startswith("{")
 
     env = runner.env_override({
-        "NOASASERVICETWO_TEST_REJECTION_REASON_ENTID": idmap,
-        "NOASASERVICETWO_TEST_LIVE": "FALSE",
-        "NOASASERVICETWO_TEST_EXPLAIN": "FALSE",
+        "NO_AS_A_SERVICE_TWO_TEST_REJECTION_REASON_ENTID": idmap,
+        "NO_AS_A_SERVICE_TWO_TEST_LIVE": "FALSE",
+        "NO_AS_A_SERVICE_TWO_TEST_EXPLAIN": "FALSE",
     })
 
     idmap_resolved = helpers.to_map(
-        env.get("NOASASERVICETWO_TEST_REJECTION_REASON_ENTID"))
+        env.get("NO_AS_A_SERVICE_TWO_TEST_REJECTION_REASON_ENTID"))
     if idmap_resolved is None:
         idmap_resolved = helpers.to_map(idmap)
 
-    if env.get("NOASASERVICETWO_TEST_LIVE") == "TRUE":
+    if env.get("NO_AS_A_SERVICE_TWO_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
             },
@@ -105,13 +105,13 @@ def _rejection_reason_basic_setup(extra):
         ])
         client = NoAsAServiceTwoSDK(helpers.to_map(merged_opts))
 
-    _live = env.get("NOASASERVICETWO_TEST_LIVE") == "TRUE"
+    _live = env.get("NO_AS_A_SERVICE_TWO_TEST_LIVE") == "TRUE"
     return {
         "client": client,
         "data": entity_data,
         "idmap": idmap_resolved,
         "env": env,
-        "explain": env.get("NOASASERVICETWO_TEST_EXPLAIN") == "TRUE",
+        "explain": env.get("NO_AS_A_SERVICE_TWO_TEST_EXPLAIN") == "TRUE",
         "live": _live,
         "synthetic_only": _live and not _idmap_overridden,
         "now": int(time.time() * 1000),

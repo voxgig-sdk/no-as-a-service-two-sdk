@@ -59,11 +59,11 @@ def rejection_reason_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "NOASASERVICETWO_TEST_REJECTION_REASON_ENTID" => {},
-    "NOASASERVICETWO_TEST_LIVE" => "FALSE",
+    "NO_AS_A_SERVICE_TWO_TEST_REJECTION_REASON_ENTID" => {},
+    "NO_AS_A_SERVICE_TWO_TEST_LIVE" => "FALSE",
   })
 
-  live = env["NOASASERVICETWO_TEST_LIVE"] == "TRUE"
+  live = env["NO_AS_A_SERVICE_TWO_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
