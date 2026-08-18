@@ -40,7 +40,7 @@ class NoAsAServiceTwoSDK
         $utility = new NoAsAServiceTwoUtility();
         $this->_utility = $utility;
 
-        $config = NoAsAServiceTwoConfig::make_config();
+        $config = NoAsAServiceTwoConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

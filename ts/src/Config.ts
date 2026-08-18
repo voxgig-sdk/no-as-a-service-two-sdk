@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://naas.isalman.dev',
+    base: "https://naas.isalman.dev",
 
     headers: {
       "content-type": "application/json"
@@ -55,11 +55,9 @@ class Config {
     "rejection_reason": {
       "fields": [
         {
-          "active": true,
           "name": "reason",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         }
       ],
       "name": "rejection_reason",
@@ -69,7 +67,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -81,11 +78,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
