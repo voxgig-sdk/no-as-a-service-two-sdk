@@ -116,7 +116,7 @@ const rejection_reason = client.RejectionReason()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `reason` | `string` | Yes |  |
+| `reason` | `string` | Yes | A random rejection or "no" reason |
 
 ### Operations
 

@@ -235,7 +235,7 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `reason` |  |
+| `reason` | A random rejection or "no" reason |
 
 Operations: Load.
 
@@ -260,7 +260,7 @@ Create an instance: `rejection_reason = client.RejectionReason`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `reason` | `String` |  |
+| `reason` | `String` | A random rejection or "no" reason |
 
 #### Example: Load
 

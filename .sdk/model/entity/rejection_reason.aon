@@ -8,6 +8,7 @@ main: kit: entity: rejection_reason: {
     {
       name: "reason"
       req: true
+      short: "A random rejection or \"no\" reason"
       type: "`$STRING`"
     }
   ]

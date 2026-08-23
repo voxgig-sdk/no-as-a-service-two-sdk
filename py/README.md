@@ -241,7 +241,7 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `reason` |  |
+| `reason` | A random rejection or "no" reason |
 
 Operations: Load.
 
@@ -266,7 +266,7 @@ Create an instance: `rejection_reason = client.RejectionReason()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `reason` | `str` |  |
+| `reason` | `str` | A random rejection or "no" reason |
 
 #### Example: Load
 

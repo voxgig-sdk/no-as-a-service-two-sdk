@@ -225,7 +225,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `reason` |  |
+| `reason` | A random rejection or "no" reason |
 
 Operations: Load.
 
@@ -250,7 +250,7 @@ Create an instance: `local rejection_reason = client:RejectionReason(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `reason` | `string` |  |
+| `reason` | `string` | A random rejection or "no" reason |
 
 #### Example: Load
 

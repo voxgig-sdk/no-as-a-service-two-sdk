@@ -19,6 +19,9 @@ module NoAsAServiceTwoConfig
     {
       "main" => {
         "name" => "NoAsAServiceTwo",
+        "slug" => "no-as-a-service-two",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -42,6 +45,7 @@ module NoAsAServiceTwoConfig
             {
               "name" => "reason",
               "req" => true,
+              "short" => "A random rejection or \"no\" reason",
               "type" => "`$STRING`",
             },
           ],

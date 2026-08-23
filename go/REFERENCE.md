@@ -98,7 +98,7 @@ fmt.Println(rejectionReason.GetName()) // "rejection_reason"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `reason` | `string` | Yes |  |
+| `reason` | `string` | Yes | A random rejection or "no" reason |
 
 ### Operations
 

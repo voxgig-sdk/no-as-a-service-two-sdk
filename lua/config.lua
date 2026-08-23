@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "NoAsAServiceTwo",
+      slug = "no-as-a-service-two",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -30,6 +33,7 @@ local function make_config()
           {
             ["name"] = "reason",
             ["req"] = true,
+            ["short"] = "A random rejection or \"no\" reason",
             ["type"] = "`$STRING`",
           },
         },

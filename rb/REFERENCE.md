@@ -93,7 +93,7 @@ rejection_reason = client.RejectionReason
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `reason` | `String` | Yes |  |
+| `reason` | `String` | Yes | A random rejection or "no" reason |
 
 ### Operations
 

@@ -245,7 +245,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `reason` |  |
+| `reason` | A random rejection or "no" reason |
 
 Operations: Load.
 
@@ -270,7 +270,7 @@ Create an instance: `$rejection_reason = $client->RejectionReason();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `reason` | `string` |  |
+| `reason` | `string` | A random rejection or "no" reason |
 
 #### Example: Load
 

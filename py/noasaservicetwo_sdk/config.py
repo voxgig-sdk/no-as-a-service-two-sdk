@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "NoAsAServiceTwo",
+            "slug": "no-as-a-service-two",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -51,6 +54,7 @@ def make_config():
           {
             "name": "reason",
             "req": True,
+            "short": "A random rejection or \"no\" reason",
             "type": "`$STRING`",
           },
         ],
