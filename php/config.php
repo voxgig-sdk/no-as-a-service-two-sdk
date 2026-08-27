@@ -42,6 +42,7 @@ class NoAsAServiceTwoConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
