@@ -21,8 +21,10 @@ main: kit: entity: rejection_reason: {
         {
           method: "GET"
           orig: "/no"
-          parts: [
-            "no"
+          segments: [
+            {
+              lit: "no"
+            }
           ]
           transform: {
             req: "`reqdata`"
