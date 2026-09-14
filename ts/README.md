@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { NoAsAServiceTwoSDK } from '@voxgig-sdk/no-as-a-service-two'
+import { NoAsAServiceTwoSDK } from '@voxgig-sdk/no-as-a-service-two-sdk'
 
 const client = new NoAsAServiceTwoSDK()
 ```
@@ -401,7 +401,7 @@ no-as-a-service-two/
 Import the SDK from the package root:
 
 ```ts
-import { NoAsAServiceTwoSDK } from '@voxgig-sdk/no-as-a-service-two'
+import { NoAsAServiceTwoSDK } from '@voxgig-sdk/no-as-a-service-two-sdk'
 ```
 
 ### Entity state

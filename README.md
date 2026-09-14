@@ -105,7 +105,7 @@ local result, err = client:RejectionReason():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/no-as-a-service-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/releases) |
+| TypeScript | `@voxgig-sdk/no-as-a-service-two-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/releases) |
 | Python | `voxgig-sdk-no-as-a-service-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/releases) |
 | PHP | `voxgig-sdk/no-as-a-service-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/no-as-a-service-two-sdk/go` | `go get github.com/voxgig-sdk/no-as-a-service-two-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:RejectionReason():load()
 ### TypeScript
 
 ```ts
-import { NoAsAServiceTwoSDK } from '@voxgig-sdk/no-as-a-service-two'
+import { NoAsAServiceTwoSDK } from '@voxgig-sdk/no-as-a-service-two-sdk'
 
 const client = new NoAsAServiceTwoSDK()
 
