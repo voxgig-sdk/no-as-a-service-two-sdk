@@ -1,12 +1,18 @@
 # NoAsAServiceTwo SDK feature factory
 
 from noasaservicetwo_sdk.feature.base_feature import NoAsAServiceTwoBaseFeature
+from noasaservicetwo_sdk.feature.ratelimit_feature import NoAsAServiceTwoRatelimitFeature
+from noasaservicetwo_sdk.feature.retry_feature import NoAsAServiceTwoRetryFeature
 from noasaservicetwo_sdk.feature.test_feature import NoAsAServiceTwoTestFeature
+from noasaservicetwo_sdk.feature.timeout_feature import NoAsAServiceTwoTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: NoAsAServiceTwoBaseFeature(),
+    "ratelimit": lambda: NoAsAServiceTwoRatelimitFeature(),
+    "retry": lambda: NoAsAServiceTwoRetryFeature(),
     "test": lambda: NoAsAServiceTwoTestFeature(),
+    "timeout": lambda: NoAsAServiceTwoTimeoutFeature(),
 }
 
 

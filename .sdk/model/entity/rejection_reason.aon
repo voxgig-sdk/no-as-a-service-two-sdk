@@ -19,6 +19,12 @@ main: kit: entity: rejection_reason: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /no"
+            json: "{\"operationId\":\"getRandomNo\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"example1\":{\"summary\":\"Example rejection reason\",\"value\":{\"reason\":\"This feels like something Future Me would yell at Present Me for agreeing to.\"}},\"example2\":{\"summary\":\"Another example\",\"value\":{\"reason\":\"I'd rather watch paint dry while explaining the plot of Inception to my houseplant.\"}}},\"schema\":{\"properties\":{\"reason\":{\"description\":\"A random rejection or \\\"no\\\" reason\",\"example\":\"This feels like something Future Me would yell at Present Me for agreeing to.\",\"type\":\"string\"}},\"required\":[\"reason\"],\"type\":\"object\"}}},\"description\":\"A successful response containing a random rejection reason\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Too many requests, please try again later\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Rate limit exceeded. Maximum 120 requests per minute per IP\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"An error occurred while processing your request\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/no"
           segments: [
