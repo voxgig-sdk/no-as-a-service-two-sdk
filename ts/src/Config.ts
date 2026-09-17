@@ -127,9 +127,9 @@ class Config {
 
     entity: {
       
-      rejection_reason: {
-      },
-
+        rejection_reason: {
+        },
+  
     }
   }
 

@@ -105,12 +105,12 @@ local result, err = client:RejectionReason():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/no-as-a-service-two-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/releases) |
-| Python | `voxgig-sdk-no-as-a-service-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/releases) |
-| PHP | `voxgig-sdk/no-as-a-service-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/releases) |
+| TypeScript | `@voxgig-sdk/no-as-a-service-two-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/tags) |
+| Python | `voxgig-sdk-no-as-a-service-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/tags) |
+| PHP | `voxgig-sdk/no-as-a-service-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/no-as-a-service-two-sdk/go` | `go get github.com/voxgig-sdk/no-as-a-service-two-sdk/go@latest` |
-| Ruby | `voxgig-sdk-no-as-a-service-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/releases) |
-| Lua | `voxgig-sdk-no-as-a-service-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/releases) |
+| Ruby | `voxgig-sdk-no-as-a-service-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/tags) |
+| Lua | `voxgig-sdk-no-as-a-service-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/no-as-a-service-two-sdk/go-cli` | `go install github.com/voxgig-sdk/no-as-a-service-two-sdk/go-cli/cmd/no-as-a-service-two@latest` |
 | Go MCP server | `github.com/voxgig-sdk/no-as-a-service-two-sdk/go-mcp` | `go get github.com/voxgig-sdk/no-as-a-service-two-sdk/go-mcp@latest` |
 
