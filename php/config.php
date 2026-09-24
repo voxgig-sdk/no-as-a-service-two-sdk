@@ -113,9 +113,10 @@ class NoAsAServiceTwoConfig
           'fields' => [
             [
               'name' => 'reason',
+              'title' => 'Reason',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'A random rejection or "no" reason',
-              'type' => '`$STRING`',
             ],
           ],
           'name' => 'rejection_reason',
@@ -125,7 +126,6 @@ class NoAsAServiceTwoConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/no',
@@ -134,14 +134,16 @@ class NoAsAServiceTwoConfig
                       'lit' => 'no',
                     ],
                   ],
-                  'select' => [],
+                  'parts' => [
+                    'no',
+                  ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'no',
-                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],

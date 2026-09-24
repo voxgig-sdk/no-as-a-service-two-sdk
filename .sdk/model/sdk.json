@@ -24,21 +24,88 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "rejection_reason": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "reason",
-              "req": true,
-              "short": "A random rejection or \"no\" reason",
-              "type": "`$STRING`"
+          "fields": {
+            "reason": {
+              "a": true,
+              "h": "Reason",
+              "n": "reason",
+              "r": true,
+              "sh": "A random rejection or \"no\" reason",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "rejection_reason",
           "op": {
             "load": {
@@ -46,24 +113,24 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /no",
-                    "json": "{\"operationId\":\"getRandomNo\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"example1\":{\"summary\":\"Example rejection reason\",\"value\":{\"reason\":\"This feels like something Future Me would yell at Present Me for agreeing to.\"}},\"example2\":{\"summary\":\"Another example\",\"value\":{\"reason\":\"I'd rather watch paint dry while explaining the plot of Inception to my houseplant.\"}}},\"schema\":{\"properties\":{\"reason\":{\"description\":\"A random rejection or \\\"no\\\" reason\",\"example\":\"This feels like something Future Me would yell at Present Me for agreeing to.\",\"type\":\"string\"}},\"required\":[\"reason\"],\"type\":\"object\"}}},\"description\":\"A successful response containing a random rejection reason\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Too many requests, please try again later\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Rate limit exceeded. Maximum 120 requests per minute per IP\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"An error occurred while processing your request\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/no",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/no",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "no"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -492,17 +559,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "rejection_reason_ref01",
                 "srcdatavar": "rejection_reason_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

@@ -1,0 +1,46 @@
+# Entity: rejection_reason
+
+main: kit: entity: rejection_reason: {
+
+  alias: field: {}
+
+  fields: {
+    reason: {
+      h: "Reason"
+      n: "reason"
+      r: true
+      sh: "A random rejection or \"no\" reason"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "rejection_reason"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /no"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/no"
+          s: [
+            {
+              lit: "no"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

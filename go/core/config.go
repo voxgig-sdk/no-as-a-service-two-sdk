@@ -91,9 +91,10 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "reason",
+						"title": "Reason",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "A random rejection or \"no\" reason",
-						"type": "`$STRING`",
 					},
 				},
 				"name": "rejection_reason",
@@ -103,7 +104,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/no",
@@ -112,14 +112,16 @@ func MakeConfig() map[string]any {
 										"lit": "no",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"no",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"no",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},

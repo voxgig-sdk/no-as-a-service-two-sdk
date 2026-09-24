@@ -116,9 +116,10 @@ def make_config():
         "fields": [
           {
             "name": "reason",
+            "title": "Reason",
+            "type": "`$STRING`",
             "req": True,
             "short": "A random rejection or \"no\" reason",
-            "type": "`$STRING`",
           },
         ],
         "name": "rejection_reason",
@@ -128,7 +129,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/no",
@@ -137,14 +137,16 @@ def make_config():
                     "lit": "no",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "no",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "no",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },

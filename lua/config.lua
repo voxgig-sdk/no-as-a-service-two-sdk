@@ -87,9 +87,10 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "reason",
+            ["title"] = "Reason",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "A random rejection or \"no\" reason",
-            ["type"] = "`$STRING`",
           },
         },
         ["name"] = "rejection_reason",
@@ -99,7 +100,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/no",
@@ -108,14 +108,16 @@ local function make_config()
                     ["lit"] = "no",
                   },
                 },
-                ["select"] = {},
+                ["parts"] = {
+                  "no",
+                },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "no",
-                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
