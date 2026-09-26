@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "voxgig-sdk-no-as-a-service-two"
+name = "voxgig-sdk-no-as-a-service-two-sdk"
 version = "0.0.1"
 description = "Unofficial generated Python SDK for the No-as-a-Service public API. Not affiliated with or endorsed by the upstream API provider."
 readme = "README.md"
