@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 NoAsAServiceTwoUtility::setRegistrar(function (NoAsAServiceTwoUtility $u): void {
     $u->clean = [NoAsAServiceTwoClean::class, 'call'];
+    $u->clean_add = [NoAsAServiceTwoClean::class, 'add'];
+    $u->clean_explain = [NoAsAServiceTwoDone::class, 'clean_explain'];
     $u->done = [NoAsAServiceTwoDone::class, 'call'];
     $u->make_error = [NoAsAServiceTwoMakeError::class, 'call'];
     $u->feature_add = [NoAsAServiceTwoFeatureAdd::class, 'call'];

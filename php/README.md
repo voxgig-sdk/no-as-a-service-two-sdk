@@ -12,9 +12,14 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`):
+GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/releases)), or
+from a clone as a Composer path repository:
 
-- Releases: [https://github.com/voxgig-sdk/no-as-a-service-two-sdk/releases](https://github.com/voxgig-sdk/no-as-a-service-two-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/no-as-a-service-two-sdk
+composer config repositories.no-as-a-service-two-sdk path ./no-as-a-service-two-sdk/php
+composer require voxgig-sdk/no-as-a-service-two-sdk:@dev
+```
 
 
 ## Tutorial: your first API call
