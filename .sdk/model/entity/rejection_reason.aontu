@@ -27,6 +27,10 @@ main: kit: entity: rejection_reason: {
           }
           m: "GET"
           o: "/no"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "no"

@@ -3,5 +3,14 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "A random rejection or &quot;no&quot; reason",
+      "A successful response containing a random rejection reason",
+      "Local development server",
+      "No-as-a-Service (NaaS) is a simple API that returns a random rejection reason. Use it when you need a realistic excuse, a fun &quot;no,&quot; or want to simulate being turned down in style. Built for humans, excuses, and humor.",
+      "Production server"
+    ]
+  }
 }
